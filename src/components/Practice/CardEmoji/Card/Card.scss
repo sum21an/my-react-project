@@ -1,0 +1,24 @@
+.my-card {
+  font-family: 'Avenir-Light','Yu Gothic Light',Arial;
+  cursor: pointer;
+  border-radius: 10px;
+  border: 1px solid lightgray;
+  transition: box-shadow .3s;
+  background-color: #cfd8dc;
+  padding: 0 15px 5px;
+  margin: 0 10px 15px;
+  &:hover{
+    box-shadow: 0 0 31px rgba(33, 33, 33, 0.33);
+    background-color: #fff;
+    .symbol{
+      text-shadow: orange 0 0 20px;
+    }
+  }
+  .symbol {
+    font-size: 5rem;
+  }
+  label {
+    font-size: 10px;
+    margin-bottom: 2px;
+  }
+} 

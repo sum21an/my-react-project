@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css?family=Fira+Sans");
+$green: #6ac890;
+$brdgrey: #ebebeb;
+$fontcolor: #1d1f20;
+$red: #dc2932;
+$duration: 0.2s;
+
+.label-input-container {
+  margin: 1rem auto;
+  background: #fff;
+  width: 740px;
+  padding: 1.4rem 0;
+  border-radius: 5px;
+  text-align: center;
+  h2 {
+    margin: 0 0 2rem;
+  }
+  .input-control {
+    margin: 20px auto 30px;
+    max-width: 460px;
+    position: relative;
+    // overflow-x: hidden;
+    input {
+      position: relative;
+      border: 2px solid $brdgrey;
+      font-family: inherit;
+      font-size: 16px;
+      width: 100%;
+      padding: 10px 6px;
+      border-radius: 5px;
+      font-weight: 400;
+      outline: none;
+      transition: all $duration ease-in-out;
+
+      &.input-border {
+        border: none;
+        border-bottom: 2px solid #ebebeb;
+        border-radius: 0;
+      }
+
+      &::placeholder {
+        color: #c3c3c3;
+        transition: opacity $duration ease-out;
+        opacity: 0;
+      }
+
+      &:focus::placeholder {
+        transition: opacity $duration 0.1s ease-out;
+        opacity: 1;
+      }
+    }
+  }
+}

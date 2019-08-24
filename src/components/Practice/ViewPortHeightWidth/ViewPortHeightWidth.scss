@@ -1,0 +1,24 @@
+.viewport-height-width-container{
+  height: 100%;
+  width: 100%;
+  position: relative;
+  .grid-card{
+    &::after, &::before {
+      content: '';
+      display: block;
+      clear: both;
+    }
+    .grid_item{
+      box-sizing: border-box;
+      width: 25vw;
+      height: 25vh;
+      padding: 2rem auto;
+      float: left;
+      @for $i from 1 through 24 {
+        &:nth-child(#{$i}) {
+          background-color: hsl(360 / 72 * $i, 100%, 60%);
+        }
+      }
+    }
+  }
+}
