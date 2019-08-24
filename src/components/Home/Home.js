@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import './Home.scss';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import "./Home.scss";
 
 class Home extends Component {
   constructor(props) {
@@ -8,34 +8,37 @@ class Home extends Component {
     this.state = {
       cardItem: [
         {
-          title: 'Number count As String',
-          content: 'I have use this code as react count number demo in the form of count as sentance(String)',
-          link: 'count-as-string'
+          title: "Number count As String",
+          content:
+            "I have use this code as react count number demo in the form of count as sentance(String)",
+          link: "count-as-string"
         },
         {
-          title: 'Viewport Height Width',
-          content: 'Im using viewport height and viewport width and created random color and using display grid',
-          link: 'viewport-height-width'
+          title: "Viewport Height Width",
+          content:
+            "Im using viewport height and viewport width and created random color and using display grid",
+          link: "viewport-height-width"
         },
         {
-          title: 'Accordion Demo',
-          content: 'Making accordion Animated passing content through props inot child component.',
-          link: 'accordion'
+          title: "Accordion Demo",
+          content:
+            "Making accordion Animated passing content through props inot child component.",
+          link: "accordion"
         },
         {
-          title: 'Emoji Card Demo',
-          content: 'Created Emoji Collection',
-          link: 'card-emoji'
+          title: "Emoji Card Demo",
+          content: "Created Emoji Collection",
+          link: "card-emoji"
         },
         {
-          title: 'Animation List Reload Remove',
-          content: 'Animated list',
-          link: 'list-card'
+          title: "Animation List Reload Remove",
+          content: "Animated list",
+          link: "list-card"
         },
         {
-          title: 'Label Input',
-          content: 'Label input masic',
-          link: 'label-input'
+          title: "Label Input",
+          content: "Label input masic",
+          link: "label-input"
         }
       ]
     };
@@ -46,14 +49,26 @@ class Home extends Component {
     return (
       <div>
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-          <a className="navbar-brand" href="#">Suman</a>
-          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
+          <button className="navbar-brand outline-none border-0 bg-transparent">
+            Suman
+          </button>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon" />
           </button>
           <div className="collapse navbar-collapse" id="navbarNavDropdown">
             <ul className="navbar-nav">
               <li className="nav-item active">
-                <a className="nav-link" href="/">Home</a>
+                <a className="nav-link" href="/">
+                  Home
+                </a>
               </li>
             </ul>
           </div>
@@ -64,22 +79,27 @@ class Home extends Component {
               {cardItem.map((card, index) => {
                 const { content, link, title } = card;
                 return (
-                  <div className="col-sm-10 col-md-6 col-lg-4 ml-auto mr-auto pt-3">
+                  <div
+                    key={index}
+                    className="col-sm-10 col-md-6 col-lg-4 ml-auto mr-auto pt-3"
+                  >
                     <div className="card text-center card-shadow">
                       <div className="card-body">
                         <h5 className="card-title">{title}</h5>
                         <p className="card-text">{content}</p>
-                        <Link to={`/${link}`} className="btn btn-secondary">See Demo</Link>
+                        <Link to={`/${link}`} className="btn btn-secondary">
+                          See Demo
+                        </Link>
                       </div>
                     </div>
                   </div>
-                )
+                );
               })}
             </div>
           </div>
         </section>
       </div>
-    )
+    );
   }
 }
 
