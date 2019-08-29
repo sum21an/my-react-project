@@ -39,6 +39,12 @@ class Home extends Component {
           title: "Label Input",
           content: "Label input masic",
           link: "label-input"
+        },
+        {
+          title: "Add Card",
+          content:
+            "I have created add card enter title and content in input field",
+          link: "add-card"
         }
       ]
     };
