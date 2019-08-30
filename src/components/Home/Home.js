@@ -43,7 +43,7 @@ class Home extends Component {
         {
           title: "Add Card",
           content:
-            "I have created add card enter title and content in input field",
+            "I have created add card enter title and content in input field with wising firebase database",
           link: "add-card"
         }
       ]
