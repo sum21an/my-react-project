@@ -1,8 +1,14 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
-import MyRouter from "./layout/MyRouter";
+import { Provider } from "react-redux";
+import { createBrowserHistory } from "history";
+import { Router } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.js";
+import store from "./redux/store";
+import MyRouter from "./layout/MyRouter";
+
+const history = createBrowserHistory();
 
 class App extends Component {
   constructor() {
@@ -10,7 +16,13 @@ class App extends Component {
     this.state = {};
   }
   render() {
-    return <MyRouter />;
+    return (
+      <Provider store={store}>
+        <Router history={history}>
+          <MyRouter />
+        </Router>
+      </Provider>
+    );
   }
 }
 

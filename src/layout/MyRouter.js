@@ -31,6 +31,8 @@ const AddCard = withRouter(
   lazy(() => import("../components/Practice/AddCard"))
 );
 
+const Login = withRouter(lazy(() => import("../components/Dashboard/Login")));
+
 const MyRouter = () => {
   return (
     <BrowserRouter>
@@ -48,6 +50,7 @@ const MyRouter = () => {
           <Route exact path="/list-card" component={ListCard} />
           <Route exact path="/label-input" component={LabelInput} />
           <Route exact path="/add-card" component={AddCard} />
+          <Route exact path="/login" component={Login} />
         </Switch>
       </Suspense>
     </BrowserRouter>

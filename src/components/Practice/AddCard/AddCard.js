@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./AddCard.scss";
-import firebase from "../../../firebase";
+import firebase from "../../../utils/firebase";
 
 class AddCard extends Component {
   constructor(props) {
@@ -68,7 +68,7 @@ class AddCard extends Component {
                 className="form-control"
                 type="text"
                 name="username"
-                placeholder="What's your name?"
+                placeholder="Enter title"
                 value={username}
                 onChange={this.handleChangefield}
               />
@@ -76,7 +76,7 @@ class AddCard extends Component {
                 className="form-control mt-2"
                 type="text"
                 name="currentItem"
-                placeholder="What are you bringing?"
+                placeholder="Enter subject content"
                 value={currentItem}
                 onChange={this.handleChangefield}
               />

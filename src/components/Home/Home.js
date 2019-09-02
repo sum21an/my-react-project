@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 import "./Home.scss";
+import Login from "../Dashboard/Login";
 
 class Home extends Component {
   constructor(props) {
@@ -43,7 +45,7 @@ class Home extends Component {
         {
           title: "Add Card",
           content:
-            "I have created add card enter title and content in input field",
+            "I have created add card enter title and content in input field with wising firebase database",
           link: "add-card"
         }
       ]
@@ -52,6 +54,7 @@ class Home extends Component {
 
   render() {
     const { cardItem } = this.state;
+    const { isLoginUser } = this.props;
     return (
       <div>
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -69,12 +72,22 @@ class Home extends Component {
           >
             <span className="navbar-toggler-icon" />
           </button>
-          <div className="collapse navbar-collapse" id="navbarNavDropdown">
+          <div
+            className="collapse navbar-collapse justify-content-between"
+            id="navbarNavDropdown"
+          >
             <ul className="navbar-nav">
               <li className="nav-item active">
-                <a className="nav-link" href="/">
+                <Link className="nav-link" to="/">
                   Home
-                </a>
+                </Link>
+              </li>
+            </ul>
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <Link to="/login" className="nav-link">
+                  Login
+                </Link>
               </li>
             </ul>
           </div>
@@ -82,25 +95,29 @@ class Home extends Component {
         <section>
           <div className="container">
             <div className="row">
-              {cardItem.map((card, index) => {
-                const { content, link, title } = card;
-                return (
-                  <div
-                    key={index}
-                    className="col-sm-10 col-md-6 col-lg-4 ml-auto mr-auto pt-3"
-                  >
-                    <div className="card text-center card-shadow">
-                      <div className="card-body">
-                        <h5 className="card-title">{title}</h5>
-                        <p className="card-text">{content}</p>
-                        <Link to={`/${link}`} className="btn btn-secondary">
-                          See Demo
-                        </Link>
+              {isLoginUser ? (
+                cardItem.map((card, index) => {
+                  const { content, link, title } = card;
+                  return (
+                    <div
+                      key={index}
+                      className="col-sm-10 col-md-6 col-lg-4 ml-auto mr-auto pt-3"
+                    >
+                      <div className="card text-center card-shadow">
+                        <div className="card-body">
+                          <h5 className="card-title">{title}</h5>
+                          <p className="card-text">{content}</p>
+                          <Link to={`/${link}`} className="btn btn-secondary">
+                            See Demo
+                          </Link>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                })
+              ) : (
+                <Login />
+              )}
             </div>
           </div>
         </section>
@@ -109,4 +126,13 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const mapStateToProps = state => {
+  return {
+    isLoginUser: state.loginReducers.isUserLogin
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  null
+)(Home);
