@@ -62,7 +62,7 @@ class Login extends Component {
         </form>
         <div className="d-flex mt-4">
           <p>Don't have an Account?</p>
-          <Link to="/login" className="pl-2">
+          <Link to="/register" className="pl-2">
             click here
           </Link>
         </div>
