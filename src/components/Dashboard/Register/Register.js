@@ -1,111 +1,103 @@
 import React from "react";
-import { Formik } from "formik";
 import { Link } from "react-router-dom";
-import * as Yup from "yup";
-import {
-  Button,
-  Form,
-  FormFeedback,
-  FormGroup,
-  Label,
-  Input
-} from "reactstrap";
 
-const customInitialValues = {
-  username: "",
-  email: "",
-  password: "",
-  passwordConfirm: ""
-};
-
-const validationSchema = Yup.object().shape({
-  username: Yup.string()
-    .min(2, `First name has to be at least 2 characters`)
-    .required("First name is required"),
-  email: Yup.string()
-    .email("Invalid email address")
-    .required("Email is required!")
-});
 class Register extends React.Component {
-  handleCreateUser = values => {
-    console.log(values);
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: "",
+      email: "",
+      password: "",
+      passwordConfirm: ""
+    };
+  }
+
+  handleChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  };
+
+  handleRegister = () => {
+    const { username, email, password, passwordConfirm } = this.state;
+    if (
+      username === "" ||
+      email === "" ||
+      password === "" ||
+      passwordConfirm === ""
+    ) {
+      console.log("fill all value");
+    } else {
+      console.log("filled");
+    }
   };
 
   render() {
+    const { username, email, password, passwordConfirm } = this.state;
+
     return (
       <div className="container">
-        <h2 className="text-center my-5">Registration Form</h2>
-        <Formik
-          initialValues={customInitialValues}
-          validate={validationSchema}
-          onSubmit={this.handleCreateUser}
-        >
-          {({
-            values,
-            errors,
-            touched,
-            handleChange,
-            handleBlur,
-            handleReset
-          }) => (
-            <Form>
-              <FormGroup>
-                <Label for="username">User Name</Label>
-                <Input
-                  type="text"
-                  id="username"
-                  placeholder="Enter User Name"
-                  valid={!errors}
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  invalid={touched.username && !!errors.username}
-                />
-                <FormFeedback>{errors.username}</FormFeedback>
-              </FormGroup>
-              <FormGroup>
-                <Label for="email">Email Address</Label>
-                <Input
-                  type="email"
-                  placeholder="Enter Email Address"
-                  id="email"
-                />
-                <FormFeedback>{errors.email}</FormFeedback>
-              </FormGroup>
-              <FormGroup>
-                <Label for="password">Email Password</Label>
-                <Input type="text" placeholder="Enter Password" id="password" />
-                <FormFeedback>{errors.password}</FormFeedback>
-              </FormGroup>
-              <FormGroup>
-                <Label for="passwordConfirm">Confirm Password</Label>
-                <Input
-                  type="text"
-                  placeholder="Confirm Password"
-                  id="passwordConfirm"
-                />
-                <FormFeedback>{errors.passwordConfirm}</FormFeedback>
-              </FormGroup>
-              <FormGroup>
-                <Button
-                  color="danger"
-                  className="mr-1"
-                  type="reset"
-                  onClick={handleReset}
-                >
-                  Reset
-                </Button>
-                <Button type="submit" color="success">
-                  Submit
-                </Button>
-              </FormGroup>
-              <FormGroup>
-                <p>
-                  Already have an account? <Link to="/login">click here</Link>
-                </p>
-              </FormGroup>
-            </Form>
-          )}
-        </Formik>
+        <form className="form">
+          <h1 className="title is-1">Register</h1>
+          <div className="form-group">
+            <label className="label">User Name:</label>
+            <input
+              id="username"
+              onChange={this.handleChange}
+              name="username"
+              type="text"
+              className="form-control"
+              placeholder="Enter a username.."
+              value={username}
+            />
+          </div>
+          <div className="form-group">
+            <label className="label">Email:</label>
+            <input
+              id="email"
+              onChange={this.handleChange}
+              name="email"
+              type="email"
+              className="form-control"
+              placeholder="Enter an email.."
+              value={email}
+            />
+          </div>
+          <div className="form-group">
+            <label className="label">Password:</label>
+            <input
+              id="password"
+              onChange={this.handleChange}
+              name="password"
+              type="password"
+              className="form-control"
+              placeholder="Enter a password.."
+              value={password}
+            />
+          </div>
+          <div className="form-group">
+            <label className="label">Confirm Password:</label>
+            <input
+              id="passwordConfirm"
+              onChange={this.handleChange}
+              name="passwordConfirm"
+              type="password"
+              className="form-control"
+              placeholder="Confirm password.."
+              value={passwordConfirm}
+            />
+          </div>
+          <div className="field">
+            <button onClick={this.handleRegister} className="btn btn-primary">
+              Register
+            </button>
+          </div>
+          <div className="field">
+            <p>
+              Already have an account? <Link to="/login">click here</Link>
+            </p>
+          </div>
+        </form>
       </div>
     );
   }

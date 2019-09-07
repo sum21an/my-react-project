@@ -95,29 +95,25 @@ class Home extends Component {
         <section>
           <div className="container">
             <div className="row">
-              {isLoginUser ? (
-                cardItem.map((card, index) => {
-                  const { content, link, title } = card;
-                  return (
-                    <div
-                      key={index}
-                      className="col-sm-10 col-md-6 col-lg-4 ml-auto mr-auto pt-3"
-                    >
-                      <div className="card text-center card-shadow">
-                        <div className="card-body">
-                          <h5 className="card-title">{title}</h5>
-                          <p className="card-text">{content}</p>
-                          <Link to={`/${link}`} className="btn btn-secondary">
-                            See Demo
-                          </Link>
-                        </div>
+              {cardItem.map((card, index) => {
+                const { content, link, title } = card;
+                return (
+                  <div
+                    key={index}
+                    className="col-sm-10 col-md-6 col-lg-4 ml-auto mr-auto pt-3"
+                  >
+                    <div className="card text-center card-shadow">
+                      <div className="card-body">
+                        <h5 className="card-title">{title}</h5>
+                        <p className="card-text">{content}</p>
+                        <Link to={`/${link}`} className="btn btn-secondary">
+                          See Demo
+                        </Link>
                       </div>
                     </div>
-                  );
-                })
-              ) : (
-                <Login />
-              )}
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>
